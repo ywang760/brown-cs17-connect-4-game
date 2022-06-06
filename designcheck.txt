@@ -1,0 +1,46 @@
+HumanPlayer.re
+create a Submodule called PlayerGame
+getInputJSLine: get human player's input 
+nextMove: 
+if the player types "exit", then exit the game 
+if the player types somethign else, try if it 
+is an allowed input for moveOfString (i.e., it needs 
+to be an integer, nothing else)
+If it is an allowed input, it is a valid next move
+otherwise, moveOfstring will result in a failure, and
+with an error message, print that errormessage, let the
+player type another input again
+Failure is raised by parsers when none of the first components of the stream patterns is accepted.
+Otherwise it will failwith an unexpected error
+
+Player name is the player's name
+
+These two lines create a humanplayer for Connect4
+module TestGame = Connect4.Connect4;
+module TestHumanPlayer = HumanPlayer(TestGame);
+
+
+HumanPlayer is a functor that takes in the MyGame module (of type Game ), representing Connect4 that is 
+now playing.
+
+
+Procedures used by the AI player:
+initialState
+legalMoves
+nextState
+estimateValue
+
+
+No legal moves:
+There are three status: ongoing, win, and draw.
+When win, the algorithm doesn't calculate legal moves.
+When draw, the only possible board configuration is when all intersections
+are filled. This is the situation when no legal moves is available. 
+The game will just end because it reaches a draw.
+When ongoing, there will always be legal moves.
+
+
+
+Two AIs playing against each other:
+
+
